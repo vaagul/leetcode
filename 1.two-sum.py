@@ -7,14 +7,11 @@
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        reduced_target_list = [target-x for x in nums]
-        return_list = []
-        for x in reduced_target_list:
-            try:
-                return_list.append(nums.index(x))
-                return_list.append(reduced_target_list.index(x))
-            except Exception as e:
-                continue
-            if len(return_list) > 1:
-                return return_list
+        reduced_dict = {}
+        for i in range(len(nums)):
+            if reduced_dict.get(nums[i]) is not None:
+                # print(reduced_dict)
+                return [reduced_dict[nums[i]], i]
+            else:
+                reduced_dict[target-nums[i]] = i
 # @lc code=end
