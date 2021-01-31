@@ -76,21 +76,23 @@ class Solution:
         num1_len = len(nums1)
         num2_len = len(nums2)
         median_index, is_odd = divmod(num1_len + num2_len, 2)
-        nums3 = []
-        num1_index = num2_index = 0
-        for i in range(median_index + 1):
-            if num1_index == num1_len:
-                nums3.append(nums2[num2_index])
-                num2_index += 1
-            elif num2_index == num2_len:
-                nums3.append(nums1[num1_index])
-                num1_index += 1
-            elif nums1[num1_index] < nums2[num2_index]:
-                nums3.append(nums1[num1_index])
-                num1_index += 1
-            else:
-                nums3.append(nums2[num2_index])
-                num2_index += 1
+        # nums3 = []
+        # num1_index = num2_index = 0
+        # for i in range(median_index + 1):
+        #     if num1_index == num1_len:
+        #         nums3.append(nums2[num2_index])
+        #         num2_index += 1
+        #     elif num2_index == num2_len:
+        #         nums3.append(nums1[num1_index])
+        #         num1_index += 1
+        #     elif nums1[num1_index] < nums2[num2_index]:
+        #         nums3.append(nums1[num1_index])
+        #         num1_index += 1
+        #     else:
+        #         nums3.append(nums2[num2_index])
+        #         num2_index += 1
+        nums3 = nums1 + nums2
+        nums3.sort()
         if is_odd:
             return float(nums3[median_index])
         else:
